@@ -1,7 +1,173 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/pages"
+    android:fillViewport="true"
+    
+   
     tools:context="${packageName}.${activityClass}" >
 
-</RelativeLayout>
+	<LinearLayout 
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical"
+
+	    >
+	    <LinearLayout 
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="vertical"
+	    >
+	    	<TextView 
+	    	    android:layout_width="fill_parent"
+	    	    android:layout_height="wrap_content"
+	    	    android:text="@string/register_label"
+	    	    android:gravity="center"/>
+	    	<TextView 
+	    	    android:layout_width="fill_parent"
+	    	    android:layout_height="wrap_content"
+	    	    android:text="@string/mandatory_fields"
+	    	    android:gravity="center"/>
+		</LinearLayout>
+		
+	    <LinearLayout 
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="vertical"
+	    >	
+	    	<LinearLayout
+	    	    android:layout_width="fill_parent"
+		    	android:layout_height="wrap_content"
+		    	android:orientation="horizontal"
+	    	    >
+
+		    	<TextView
+		    	    android:id="@+id/name_label"
+		    	    android:layout_width="0dp"
+		    	    android:layout_height="wrap_content"
+		    	    android:text="@string/name_label"
+		    	    android:gravity="center_vertical"
+		    	    android:layout_weight="0.4"
+		    	     />
+
+		    	<EditText
+		    	    android:id="@+id/name_val"
+		    	    android:layout_width="0dp"
+		    	    android:layout_height="wrap_content"
+		    	    android:layout_weight="0.6"
+		    	     />
+
+	    	</LinearLayout>
+	    	<LinearLayout
+	    	    android:layout_width="fill_parent"
+		    	android:layout_height="wrap_content"
+		    	android:orientation="horizontal"
+	    	    >
+
+		    	<TextView
+		    	    android:id="@+id/company_label"
+		    	    android:layout_width="0dp"
+		    	    android:layout_height="wrap_content"
+		    	    android:text="@string/company_label"
+		    	    android:gravity="center_vertical"
+		    	    android:layout_weight="0.4" />
+
+		    	<EditText
+		    	    android:id="@+id/company_value"
+		    	    android:layout_width="0dp"
+		    	    android:layout_height="wrap_content"
+		    	    android:layout_weight="0.6" />
+
+	    	</LinearLayout>
+	    	<LinearLayout
+	    	    android:layout_width="fill_parent"
+		    	android:layout_height="wrap_content"
+		    	android:orientation="horizontal"
+	    	    >
+
+		    	<TextView
+		    	    android:id="@+id/state_label"
+		    	    android:layout_width="0dp"
+		    	    android:layout_height="wrap_content"
+		    	    android:text="@string/state_label"
+		    	    android:gravity="center_vertical"
+		    	    android:layout_weight="0.4" />
+
+		    	<EditText
+		    	    android:id="@+id/state_value"
+		    	    android:layout_width="0dp"
+		    	    android:layout_height="wrap_content"
+		    	    android:layout_weight="0.6" />
+
+	    	</LinearLayout>
+	    	<LinearLayout
+	    	    android:layout_width="fill_parent"
+		    	android:layout_height="wrap_content"
+		    	android:orientation="horizontal"
+	    	    >
+
+		    	<TextView
+		    	    android:id="@+id/email_label"
+		    	    android:layout_width="0dp"
+		    	    android:layout_height="wrap_content"
+		    	    android:text="@string/email_label"
+		    	    android:gravity="center_vertical"
+		    	    android:layout_weight="0.4" />
+
+		    	<EditText
+		    	    android:id="@+id/email_value"
+		    	    android:layout_width="0dp"
+		    	    android:layout_height="wrap_content"
+		    	    android:layout_weight="0.6" />
+
+	    	</LinearLayout>
+	    	<LinearLayout
+	    	    android:layout_width="fill_parent"
+		    	android:layout_height="wrap_content"
+		    	android:orientation="horizontal"
+	    	    >
+
+		    	<TextView
+		    	    android:id="@+id/phone_label"
+		    	    android:layout_width="0dp"
+		    	    android:layout_height="wrap_content"
+		    	    android:text="@string/phone_label"
+		    	    android:gravity="center_vertical"
+		    	    android:layout_weight="0.4" />
+
+		    	<EditText
+		    	    android:id="@+id/phone_value"
+		    	    android:layout_width="0dp"
+		    	    android:layout_height="wrap_content"
+		    	    android:layout_weight="0.6" />
+
+	    	</LinearLayout>
+		</LinearLayout>
+		
+	    <LinearLayout 
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="horizontal"
+	    >
+
+			<Button
+			    android:id="@+id/click_pic_label"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="@string/click_pic_label"
+			    android:gravity="center" />
+			
+			<Button
+			    android:id="@+id/next_label"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="@string/next_label"
+			    android:gravity="center" />
+    
+		</LinearLayout>
+	</LinearLayout>
+    
+
+</ScrollView>
