@@ -3,77 +3,60 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/pages"
+    android:gravity="center"
     tools:context="${packageName}.${activityClass}" >
+	
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-    <LinearLayout 
-        android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-        android:orientation="vertical"
-        >
-        <LinearLayout 
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            >
-            <TextView 
-                android:layout_width="wrap_content"
-    		    android:layout_height="wrap_content"
-    		    android:text="@string/polymer_industry_label"
-    		     android:gravity="center"
-                />
-        </LinearLayout>
-        <LinearLayout 
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
             android:gravity="center"
-            >
-            
-            <CheckedTextView 
+            android:text="@string/polymer_industry_label"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <RadioGroup
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RadioButton
+                android:id="@+id/ind1"
                 android:layout_width="fill_parent"
-	            android:layout_height="wrap_content"
-	            android:checkMark="?android:attr/textCheckMark"
-	            android:clickable="true"
-	            android:checked="false"
-	            android:paddingLeft="6dip"
-	            android:paddingRight="6dip"
-        		android:textSize="12sp"
-	            android:gravity="center_vertical"
-	            android:hint="@string/ind1"/>
-            <CheckedTextView 
+                android:layout_height="wrap_content"
+                android:text="@string/ind1" />
+
+            <RadioButton
+                android:id="@+id/ind2"
                 android:layout_width="fill_parent"
-	            android:layout_height="wrap_content"
-	            android:checkMark="?android:attr/textCheckMark"
-	            android:clickable="true"
-	            android:checked="false"
-	            android:paddingLeft="6dip"
-	            android:paddingRight="6dip"
-        		android:textSize="12sp"
-	            android:gravity="center_vertical"
-	            android:hint="@string/ind2"/>
-            <CheckedTextView 
+                android:layout_height="wrap_content"
+                android:text="@string/ind2" />
+
+            <RadioButton
+                android:id="@+id/ind3"
                 android:layout_width="fill_parent"
-	            android:layout_height="wrap_content"
-	            android:checkMark="?android:attr/textCheckMark"
-	            android:clickable="true"
-	            android:checked="false"
-	            android:paddingLeft="6dip"
-	            android:paddingRight="6dip"
-        		android:textSize="12sp"
-	            android:gravity="center_vertical"
-	            android:hint="@string/ind3"/>
-            <CheckedTextView 
+                android:layout_height="wrap_content"
+                android:text="@string/ind3" />
+
+            <RadioButton
+                android:id="@+id/ind4"
                 android:layout_width="fill_parent"
-	            android:layout_height="wrap_content"
-	            android:checkMark="?android:attr/textCheckMark"
-	            android:clickable="true"
-	            android:checked="false"
-	            android:paddingLeft="6dip"
-	            android:paddingRight="6dip"
-        		android:textSize="12sp"
-	            android:gravity="center_vertical"
-	            android:hint="@string/ind4"/>
-        </LinearLayout>
+                android:layout_height="wrap_content"
+                android:text="@string/ind4" />
+        </RadioGroup>
     </LinearLayout>
 
 </RelativeLayout>
