@@ -97,10 +97,12 @@
         android:layout_weight="0.5"
         android:gravity="center"
         android:orientation="vertical" >
-        <Button 
+
+        <Button
+            android:id="@+id/next_label"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="@string/next_label"/>
+            android:text="@string/next_label" />
 
     </LinearLayout>
     <LinearLayout 

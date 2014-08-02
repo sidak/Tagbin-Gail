@@ -1,112 +1,127 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:background="@drawable/pages"
-    tools:context="${packageName}.${activityClass}" >
-	<LinearLayout 
+    android:fillViewport="true"
+   tools:context="${packageName}.${activityClass}" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:orientation="vertical"
-        android:layout_centerVertical="true"
-        android:weightSum="4"
         android:gravity="center"
-        >
-        <LinearLayout 
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
+        android:orientation="vertical"
+        android:weightSum="8.5" >
+		
+		<LinearLayout 
+		    android:layout_height="wrap_content"
+		    android:layout_width="fill_parent"
+		    android:orientation="vertical"
+		    android:layout_weight="2.5"
+		    
+		 >
+	    
+		</LinearLayout>
+        
+        <LinearLayout
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            >
+            android:gravity="center"
+            android:orientation="vertical" >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/poly_material"
-                android:textSize="20sp" />
-
+                android:textSize="30sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="3"
             android:gravity="center"
             android:orientation="vertical" >
 
-            <CheckedTextView
+            <CheckBox
+                android:id="@+id/mat1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:checkMark="?android:attr/textCheckMark"
-                android:checked="false"
-                android:clickable="true"
-                android:gravity="center_vertical"
-                android:hint="@string/mat1"
-                android:paddingLeft="6dip"
-                android:paddingRight="6dip"
-                android:textSize="16sp" />
+                android:paddingLeft="50dp"
+                android:text="@string/mat1"
+                android:textSize="22sp" />
 
-            <CheckedTextView
+            <CheckBox
+                android:id="@+id/mat2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:checkMark="?android:attr/textCheckMark"
-                android:checked="false"
-                android:clickable="true"
-                android:gravity="center_vertical"
-                android:hint="@string/mat2"
-                android:paddingLeft="6dip"
-                android:paddingRight="6dip"
-                android:textSize="16sp" />
+                android:paddingLeft="50dp"
+                android:text="@string/mat2"
+                android:textSize="22sp" />
 
-            <CheckedTextView
+            <CheckBox
+                android:id="@+id/mat3"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:checkMark="?android:attr/textCheckMark"
-                android:checked="false"
-                android:clickable="true"
-                android:gravity="center_vertical"
-                android:hint="@string/mat3"
-                android:paddingLeft="6dip"
-                android:paddingRight="6dip"
-                android:textSize="16sp" />
+                android:paddingLeft="50dp"
+                android:text="@string/mat3"
+                android:textSize="22sp" />
 
-            <CheckedTextView
+            <CheckBox
+                android:id="@+id/mat4"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:checkMark="?android:attr/textCheckMark"
-                android:checked="false"
-                android:clickable="true"
-                android:gravity="center_vertical"
-                android:hint="@string/mat4"
-                android:paddingLeft="6dip"
-                android:paddingRight="6dip"
-                android:textSize="16sp" />
+                android:paddingLeft="50dp"
+                android:text="@string/mat4"
+                android:textSize="22sp" />
 
-            <CheckedTextView
+            <CheckBox
+                android:id="@+id/mat5"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:checkMark="?android:attr/textCheckMark"
-                android:checked="false"
-                android:clickable="true"
-                android:gravity="center_vertical"
-                android:hint="@string/mat5"
-                android:paddingLeft="6dip"
-                android:paddingRight="6dip"
-                android:textSize="16sp" />
+                android:paddingLeft="50dp"
+                android:text="@string/mat5"
+                android:textSize="22sp" />
 
-            <CheckedTextView
+            <CheckBox
+                android:id="@+id/mat_others"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:checkMark="?android:attr/textCheckMark"
-                android:checked="false"
-                android:clickable="true"
-                android:gravity="center_vertical"
-                android:hint="@string/mat_others"
-                android:paddingLeft="6dip"
-                android:paddingRight="6dip"
-                android:textSize="16sp" />
+                android:layout_gravity="center"
+                android:paddingLeft="50dp"
+                android:text="@string/mat_others"
+                android:textSize="22sp" />
+
         </LinearLayout>
-
+        
+        <LinearLayout 
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="horizontal"
+		    android:gravity="center"
+		    android:layout_weight="0.5"
+	    >
+			<Button
+			    android:id="@+id/next_label"
+			    android:layout_width="200dp"
+			    android:layout_height="wrap_content"
+			    android:text="@string/next_label"
+			    android:gravity="center" />
+    
+		</LinearLayout>
+		<LinearLayout 
+		    android:layout_height="wrap_content"
+		    android:layout_width="fill_parent"
+		    android:orientation="vertical"
+		    android:layout_weight="2.5"
+		    
+		    >
+		    
+		</LinearLayout>
     </LinearLayout>
-</RelativeLayout>
+</ScrollView>
