@@ -3,9 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/pages"
+    android:background="@drawable/pages_a"
+
     android:fillViewport="true"
-   tools:context="${packageName}.${activityClass}" >
+    android:id="@+id/material_layout"
+    tools:context="${packageName}.${activityClass}" >
+
+    
 
     <LinearLayout
         android:id="@+id/linearLayout1"
@@ -14,17 +18,15 @@
         android:gravity="center"
         android:orientation="vertical"
         android:weightSum="8.5" >
-		
-		<LinearLayout 
-		    android:layout_height="wrap_content"
-		    android:layout_width="fill_parent"
-		    android:orientation="vertical"
-		    android:layout_weight="2.5"
-		    
-		 >
-	    
-		</LinearLayout>
         
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.5"
+            android:orientation="vertical" >
+        </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -96,32 +98,29 @@
                 android:paddingLeft="50dp"
                 android:text="@string/mat_others"
                 android:textSize="22sp" />
-
         </LinearLayout>
-        
-        <LinearLayout 
-		    android:layout_width="fill_parent"
-		    android:layout_height="wrap_content"
-		    android:orientation="horizontal"
-		    android:gravity="center"
-		    android:layout_weight="0.5"
-	    >
-			<Button
-			    android:id="@+id/next_label"
-			    android:layout_width="200dp"
-			    android:layout_height="wrap_content"
-			    android:text="@string/next_label"
-			    android:gravity="center" />
-    
-		</LinearLayout>
-		<LinearLayout 
-		    android:layout_height="wrap_content"
-		    android:layout_width="fill_parent"
-		    android:orientation="vertical"
-		    android:layout_weight="2.5"
-		    
-		    >
-		    
-		</LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/next_label"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/next_label" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.5"
+            android:orientation="vertical" >
+        </LinearLayout>
     </LinearLayout>
+
 </ScrollView>

@@ -33,11 +33,13 @@
         </activity>
         <activity
             android:name="com.sidak.tagbinGail.IndustryActivity"
-            android:label="@string/title_activity_industry" >
+            android:label="@string/title_activity_industry"
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name="com.sidak.tagbinGail.MaterialActivity"
-            android:label="@string/title_activity_material" >
+            android:label="@string/title_activity_material"
+            android:screenOrientation="landscape" >
         </activity>
     </application>
 
