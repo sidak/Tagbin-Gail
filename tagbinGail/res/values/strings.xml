@@ -4,11 +4,11 @@
     <string name="app_name">GAIL India Ltd.</string>
     <string name="title_activity_splash_screen">GAIL India Ltd.</string>
 	<string name ="register_label">User Registration</string>
-	<string name ="name_label">Name </string>
-	<string name ="company_label">Company Name</string>
-	<string name ="state_label">State</string>
-	<string name ="email_label">Email</string>
-	<string name ="phone_label">Phone No.</string>
+	<string name ="name_label">Name * </string>
+	<string name ="company_label">Company Name * </string>
+	<string name ="state_label">State * </string>
+	<string name ="email_label">Email * </string>
+	<string name ="phone_label">Phone No. * </string>
 	<string name ="next_label">Next</string>
 	<string name ="click_pic_label">Click Picture of Visiting Card</string>
 	<string name ="polymer_industry_label">How are you related to Polymer industry:</string>
@@ -35,7 +35,7 @@
 	<string name ="sector8">Monofilament and Tarpauline</string>
 	<string name ="consump_label">Your Consumption per month (in MT):</string>
 	<string name ="summary_label">Summary</string>
-	<string name ="mandatory_fields">fields with * are mandatory</string>
+	<string name ="mandatory_fields">(fields with * are mandatory )</string>
 	<string name ="a"></string>
 	<string name ="e"></string>
 	<string name ="r"></string>
