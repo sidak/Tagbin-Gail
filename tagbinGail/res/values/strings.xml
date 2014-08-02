@@ -46,5 +46,6 @@
     <string name="title_activity_industry">IndustryActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_material">MaterialActivity</string>
+    <string name="alphanumeric">(alphanumeric)</string>
 
 </resources>

@@ -1,62 +1,115 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/pages"
     android:gravity="center"
+    android:orientation="vertical"
+    android:weightSum="9.5"
     tools:context="${packageName}.${activityClass}" >
 	
+	<LinearLayout 
+	    android:layout_height="wrap_content"
+	    android:layout_width="fill_parent"
+	    android:orientation="vertical"
+	    android:layout_weight="2.5"
+	    
+	    >
+	    
+	</LinearLayout>
     <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        
+        android:orientation="vertical" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/polymer_industry_label"
-            android:textSize="20sp" />
+            android:textSize="30sp" />
 
     </LinearLayout>
+	<LinearLayout 
+	    android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:orientation="vertical"
+	    >
 
+	<RadioGroup
+	    android:id="@+id/radioGroup"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_marginBottom="-10dp"
+	    android:layout_weight="2.5"
+	    android:gravity="center"
+	    android:orientation="vertical" >
+
+        <RadioButton
+            android:id="@+id/ind1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ind1"
+            android:textSize="22sp" />
+
+        <RadioButton
+            android:id="@+id/ind2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ind2"
+            android:textSize="22sp" />
+
+        <RadioButton
+            android:id="@+id/ind3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ind3"
+            android:textSize="22sp" />
+
+        <RadioButton
+            android:id="@+id/ind4"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ind4"
+            android:textSize="22sp" />
+
+    </RadioGroup>
+
+	<EditText
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginTop="-10dp"
+	    android:layout_weight="0.5"
+	    android:gravity="center_vertical|left"
+	    android:hint="@string/alphanumeric"
+	    android:visibility="invisible"
+	    android:textSize="22sp" />
+
+    </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_weight="0.5"
         android:gravity="center"
         android:orientation="vertical" >
-
-        <RadioGroup
-            android:layout_width="fill_parent"
+        <Button 
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:text="@string/next_label"/>
 
-            <RadioButton
-                android:id="@+id/ind1"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/ind1" />
-
-            <RadioButton
-                android:id="@+id/ind2"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/ind2" />
-
-            <RadioButton
-                android:id="@+id/ind3"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/ind3" />
-
-            <RadioButton
-                android:id="@+id/ind4"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/ind4" />
-        </RadioGroup>
     </LinearLayout>
-
-</RelativeLayout>
+    <LinearLayout 
+	    android:layout_height="wrap_content"
+	    android:layout_width="fill_parent"
+	    android:orientation="vertical"
+	    android:layout_weight="2.5"
+	    >
+	    
+	</LinearLayout>
+	
+</LinearLayout>
