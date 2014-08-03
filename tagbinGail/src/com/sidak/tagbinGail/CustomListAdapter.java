@@ -17,7 +17,7 @@ public class CustomListAdapter extends ArrayAdapter<ListModel> {
 	private final Context context;
 
 	public CustomListAdapter(Context context, List<ListModel> list) {
-		super(context, android.R.id.content, list);
+		super(context, R.layout.list_item, list);
 		this.context = context;
 		this.list = list;
 	}

@@ -5,12 +5,12 @@
     android:background="@drawable/pages_a"
     android:gravity="center"
     android:orientation="vertical"
-    android:weightSum="1.4"
+    android:weightSum="9"
     tools:context="${packageName}.${activityClass}" >
 	<LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.4"
+            android:layout_weight="1"
             android:orientation="vertical" >
     </LinearLayout>
 
@@ -18,7 +18,7 @@
         android:id="@+id/linearLayout1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.3"
+        android:layout_weight="0.5"
         android:gravity="center"
         android:orientation="vertical" >
 
@@ -34,7 +34,7 @@
 	<LinearLayout
  	    android:layout_width="wrap_content"
  	    android:layout_height="wrap_content"
- 	    android:layout_weight="0.1"
+ 	    android:layout_weight="0.5"
  	    android:gravity="center"
  	    android:orientation="vertical" >
 
@@ -47,13 +47,21 @@
 		    android:text="@string/next_label" />
 
  	</LinearLayout>
-
+	
     <ListView
-        android:layout_weight="0.6"
+        android:layout_weight="5.5"
         android:id="@android:id/list"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        
         android:divider="#b5b5b5"
         android:dividerHeight="1dp" />
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:orientation="vertical" >
+    </LinearLayout>
+    
  
 </LinearLayout>
