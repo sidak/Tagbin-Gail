@@ -1,9 +1,8 @@
 package com.sidak.tagbinGail;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,6 +12,7 @@ public class ConsumptionActivity extends Activity {
 	private EditText consum;
 	private MyApplication myApp;
 	private Button submit;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,10 @@ public class ConsumptionActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				if (saveInfo()) {
-					//save in excel and call summary
+					Intent intent = new Intent(ConsumptionActivity.this,
+							SummaryActivity.class);
+					startActivity(intent);
+					
 				}
 			}
 		});

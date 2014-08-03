@@ -32,7 +32,7 @@ public class MainActivity extends Activity {
 	private String emailStr;
 	private String phoneStr;
 	private String stateStr;
-
+	private static final String TAG=MainActivity.class.getSimpleName();
 	private MyApplication myApp;
 	String mCurrentPhotoPath;
 	static final int REQUEST_TAKE_PHOTO = 1;
@@ -102,7 +102,12 @@ public class MainActivity extends Activity {
 		myApp.setPhoneNo(phoneStr);
 		myApp.setCompanyName(cNameStr);
 		myApp.setState(stateStr);
-
+		if(fileUri!=null){
+			myApp.setImageUrl(fileUri.toString());
+			
+		}
+		Log.d(TAG, "name "+nameStr + "email "+emailStr+ "phone "+phoneStr+"company "+cNameStr
+				+"state "+stateStr+"image uri "+fileUri.toString());
 	}
 
 	/**

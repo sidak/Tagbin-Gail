@@ -61,6 +61,10 @@
             android:label="@string/title_activity_products"
             android:screenOrientation="landscape" >
         </activity>
+        <activity
+            android:name="com.sidak.tagbinGail.SummaryActivity"
+            android:label="@string/title_activity_summary" >
+        </activity>
     </application>
 
 </manifest>

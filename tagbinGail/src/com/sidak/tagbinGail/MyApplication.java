@@ -10,12 +10,13 @@ public class MyApplication extends Application {
 	private String state;
 	private String email;
 	private String phoneNo;
-	private String imageUrl;
 	private String industry;
 	private ArrayList<String> materials;
 	private ArrayList<String> products;
 	private String consumption;
     private static MyApplication mInstance = null;
+	private String imageUrl;
+
 	
 	public static MyApplication getInstance(){
         if(mInstance == null)
@@ -88,14 +89,19 @@ public class MyApplication extends Application {
 			materials.add(mat);
 		}
 	}
+	public ArrayList<String> getMaterials(){
+		return materials;
+	}
 	public void deleteMaterial(String mat){
 		materials.remove(mat);
 	}
-	
+	public ArrayList<String> getProducts(){
+		return products;
+	}
 	public void addProduct(String pro){
 		products.add(pro);
 	}
-	public void deleteProducts(String pro){
+	public void deleteProduct(String pro){
 		products.remove(pro);
 	}
 	

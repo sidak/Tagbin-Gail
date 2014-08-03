@@ -50,5 +50,16 @@
     <string name="title_activity_consumption">ConsumptionActivity</string>
     <string name="title_activity_products">ProductsActivity</string>
     <string name="empty_consum_value">please enter your consumption value</string>
+    <string name="title_activity_summary">SummaryActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="sum_name">name</string>
+    <string name="sum_mail">email</string>
+    <string name="sum_phone">phone no</string>
+    <string name="sum_state">state</string>
+    <string name="sum_company_name">company name</string>
+    <string name="sum_relation">relation to polymer industry</string>
+    <string name="sum_materials">dealing polymer materials</string>
+    <string name="sum_products">sector catering to</string>
+    <string name="sum_consumption">consumption</string>
 
 </resources>
