@@ -40,14 +40,15 @@
     <string name="numeric">numeric</string>
     <string name="no_camera">You don\'t have a camera app</string>
     <string name="photo_clicked">Photo Captured Successfully</string>
-    <string name="d"></string>
-    <string name="f"></string>
-    <string name="g"></string>
+    <string name="empty_message">please enter all the fields</string>
+    <string name="empty_radio">please select one of them</string>
+    <string name="empty_others">please enter the OTHERS field</string>
     <string name="title_activity_industry">IndustryActivity</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="empty_checkboxes">please select one or more</string>
     <string name="title_activity_material">MaterialActivity</string>
     <string name="alphanumeric">(alphanumeric)</string>
     <string name="title_activity_consumption">ConsumptionActivity</string>
     <string name="title_activity_products">ProductsActivity</string>
+    <string name="empty_consum_value">please enter your consumption value</string>
 
 </resources>

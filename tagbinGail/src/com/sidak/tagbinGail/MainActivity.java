@@ -15,11 +15,25 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	private Button next;
 	private Button capture_pic;
+	private EditText name;
+	private EditText cName;
+	private EditText email;
+	private EditText phone;
+	private EditText state;
+
+	private String nameStr;
+	private String cNameStr;
+	private String emailStr;
+	private String phoneStr;
+	private String stateStr;
+
+	private MyApplication myApp;
 	String mCurrentPhotoPath;
 	static final int REQUEST_TAKE_PHOTO = 1;
 	private Uri fileUri; // file url to store image/video
@@ -31,6 +45,7 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		myApp = MyApplication.getInstance();
 		setContentView(R.layout.activity_main);
 		next = (Button) findViewById(R.id.next_label);
 		next.setOnClickListener(new View.OnClickListener() {
@@ -38,9 +53,12 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(MainActivity.this,
-						IndustryActivity.class);
-				startActivity(intent);
+				if(validateInfo()){
+					saveInfo();
+					Intent intent = new Intent(MainActivity.this,
+							IndustryActivity.class);
+					startActivity(intent);
+				}
 			}
 		});
 		capture_pic = (Button) findViewById(R.id.click_pic_label);
@@ -52,6 +70,38 @@ public class MainActivity extends Activity {
 				captureImage();
 			}
 		});
+		state = (EditText) findViewById(R.id.state_value);
+		name = (EditText) findViewById(R.id.name_val);
+		email = (EditText) findViewById(R.id.email_value);
+		phone = (EditText) findViewById(R.id.phone_value);
+		cName = (EditText) findViewById(R.id.company_value);
+
+	}
+
+	protected void getValueFromEdittext() {
+		nameStr = name.getText().toString();
+		emailStr = email.getText().toString();
+		phoneStr = phone.getText().toString();
+		cNameStr = cName.getText().toString();
+		stateStr = state.getText().toString();
+	}
+
+	protected boolean validateInfo() {
+		getValueFromEdittext();
+		if(nameStr.equals("")||emailStr.equals("")||phoneStr.equals("")
+				||cNameStr.equals("")||stateStr.equals("")){
+			Toast.makeText(this, R.string.empty_message, Toast.LENGTH_LONG).show();
+			return false;
+		}
+		else return true;
+	}
+
+	protected void saveInfo() {
+		myApp.setName(nameStr);
+		myApp.setEmail(emailStr);
+		myApp.setPhoneNo(phoneStr);
+		myApp.setCompanyName(cNameStr);
+		myApp.setState(stateStr);
 
 	}
 
@@ -80,7 +130,7 @@ public class MainActivity extends Activity {
 
 		} else {
 			Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-			
+
 			fileUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE);
 
 			intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
@@ -134,9 +184,9 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
-			Toast.makeText(
-					MainActivity.this,
-					getResources().getString(R.string.photo_clicked), Toast.LENGTH_SHORT).show();
+			Toast.makeText(MainActivity.this,
+					getResources().getString(R.string.photo_clicked),
+					Toast.LENGTH_SHORT).show();
 		}
 	}
 

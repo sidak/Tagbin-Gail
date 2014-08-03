@@ -7,11 +7,12 @@
     android:orientation="vertical"
     android:weightSum="9"
     tools:context="${packageName}.${activityClass}" >
-	<LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical" >
     </LinearLayout>
 
     <LinearLayout
@@ -28,40 +29,36 @@
             android:gravity="center"
             android:text="@string/polymer_industry_label"
             android:textSize="30sp" />
-
     </LinearLayout>
 
-	<LinearLayout
- 	    android:layout_width="wrap_content"
- 	    android:layout_height="wrap_content"
- 	    android:layout_weight="0.5"
- 	    android:gravity="center"
- 	    android:orientation="vertical" >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:gravity="center"
+        android:orientation="vertical" >
 
-		<Button
-		    android:id="@+id/submit_list"
+        <Button
+            android:id="@+id/submit_list"
             android:layout_width="200dp"
-		    android:layout_height="wrap_content"
-		    android:gravity="center"
-		    
-		    android:text="@string/next_label" />
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/next_label" />
+    </LinearLayout>
 
- 	</LinearLayout>
-	
     <ListView
-        android:layout_weight="5.5"
         android:id="@android:id/list"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        
+        android:layout_weight="5.5"
         android:divider="#b5b5b5"
         android:dividerHeight="1dp" />
+
     <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.5"
-            android:orientation="vertical" >
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.5"
+        android:orientation="vertical" >
     </LinearLayout>
-    
- 
+
 </LinearLayout>

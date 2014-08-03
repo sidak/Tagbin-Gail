@@ -4,12 +4,42 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class ConsumptionActivity extends Activity {
+	private EditText consum;
+	private MyApplication myApp;
+	private Button submit;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_consumption);
+		myApp = MyApplication.getInstance();
+		consum = (EditText) findViewById(R.id.consum_value);
+		submit = (Button) findViewById(R.id.final_submit_label);
+		submit.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if (saveInfo()) {
+					//save in excel and call summary
+				}
+			}
+		});
+	}
+
+	protected boolean saveInfo() {
+		if (consum.getText().toString() != null) {
+			myApp.setConsumption(consum.getText().toString());
+			return true;
+		} else {
+			Toast.makeText(this, getString(R.string.empty_consum_value), Toast.LENGTH_LONG).show();
+			return false;
+		}
 	}
 }

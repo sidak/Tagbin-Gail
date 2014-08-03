@@ -77,19 +77,21 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/ind4"
-            android:textSize="22sp" />
+            android:textSize="22sp"
+            android:onClick="onRadioButtonClick" />
 
     </RadioGroup>
 
 	<EditText
+	    android:id="@+id/others_val"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:layout_marginTop="-10dp"
 	    android:layout_weight="0.5"
 	    android:gravity="center_vertical|left"
 	    android:hint="@string/alphanumeric"
-	    android:visibility="invisible"
-	    android:textSize="22sp" />
+	    android:textSize="22sp"
+	    android:visibility="invisible" />
 
     </LinearLayout>
     <LinearLayout
