@@ -41,6 +41,11 @@
             android:label="@string/title_activity_material"
             android:screenOrientation="landscape" >
         </activity>
+        <activity
+            android:name="com.sidak.tagbinGail.ConsumptionActivity"
+            android:label="@string/title_activity_consumption"
+            android:screenOrientation="landscape" >
+        </activity>
     </application>
 
 </manifest>

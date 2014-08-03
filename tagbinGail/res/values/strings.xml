@@ -36,8 +36,8 @@
     <string name="consump_label">Your Consumption per month (in MT):</string>
     <string name="summary_label">Summary</string>
     <string name="mandatory_fields">(fields with * are mandatory )</string>
-    <string name="a"></string>
-    <string name="e"></string>
+    <string name="submit_label">Submit</string>
+    <string name="numeric">numeric</string>
     <string name="r"></string>
     <string name="s"></string>
     <string name="d"></string>
@@ -47,5 +47,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_material">MaterialActivity</string>
     <string name="alphanumeric">(alphanumeric)</string>
+    <string name="title_activity_consumption">ConsumptionActivity</string>
 
 </resources>
