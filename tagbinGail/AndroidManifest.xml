@@ -7,9 +7,11 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="18" />
-    <uses-feature android:name="android.hardware.camera"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <uses-feature android:name="android.hardware.camera" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -47,6 +49,11 @@
         <activity
             android:name="com.sidak.tagbinGail.ConsumptionActivity"
             android:label="@string/title_activity_consumption"
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name="com.sidak.tagbinGail.ProductsActivity"
+            android:label="@string/title_activity_products"
             android:screenOrientation="landscape" >
         </activity>
     </application>

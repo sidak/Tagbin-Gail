@@ -48,5 +48,6 @@
     <string name="title_activity_material">MaterialActivity</string>
     <string name="alphanumeric">(alphanumeric)</string>
     <string name="title_activity_consumption">ConsumptionActivity</string>
+    <string name="title_activity_products">ProductsActivity</string>
 
 </resources>

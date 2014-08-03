@@ -19,7 +19,7 @@ public class MaterialActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent= new Intent(MaterialActivity.this, ConsumptionActivity.class);
+				Intent intent= new Intent(MaterialActivity.this, ProductsActivity.class);
 				startActivity(intent);
 			}
 		});
