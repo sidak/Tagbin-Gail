@@ -64,6 +64,7 @@
                 android:orientation="vertical" >
 
                 <TextView
+                    android:id="@id/name_label"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -72,6 +73,7 @@
                     android:textSize="20sp" />
 
                 <TextView
+                    android:id="@id/company_label"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -80,6 +82,7 @@
                     android:textSize="20sp" />
 
                 <TextView
+                    android:id="@id/email_label"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -88,6 +91,7 @@
                     android:textSize="20sp" />
 
                 <TextView
+                    android:id="@id/phone_label"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -96,6 +100,7 @@
                     android:textSize="20sp" />
 
                 <TextView
+                    android:id="@id/state_label"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -104,6 +109,7 @@
                     android:textSize="20sp" />
 
                 <TextView
+                    android:id="@id/relation_label"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -112,6 +118,7 @@
                     android:textSize="20sp" />
 
                 <TextView
+                    android:id="@id/materials_label"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -120,6 +127,7 @@
                     android:textSize="20sp" />
 
                 <TextView
+                    android:id="@id/products_label"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -128,12 +136,14 @@
                     android:textSize="20sp" />
 
                 <TextView
+                    android:id="@id/consumption_label"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:gravity="center_vertical|left"
                     android:text="@string/sum_consumption"
                     android:textSize="20sp" />
+
             </LinearLayout>
         </LinearLayout>
 

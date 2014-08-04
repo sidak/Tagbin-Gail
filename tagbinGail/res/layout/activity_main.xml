@@ -104,7 +104,8 @@
 		    	    android:layout_height="wrap_content"
 		    	    android:layout_weight="0.4"
 		    	    android:inputType="text"
-		    	    
+		    	    android:background="@drawable/group_row"
+		    	    android:padding="2dp"
 		    	     />
 		    	<LinearLayout 
 			        android:layout_width="0dp"
@@ -120,6 +121,7 @@
 		    	android:layout_height="wrap_content"
 		    	android:orientation="horizontal"
 		    	android:layout_weight="0.4"
+		    	android:gravity="center"
 	    	    >
 				<LinearLayout 
 			        android:layout_width="0dp"
@@ -142,7 +144,8 @@
 		    	    android:layout_width="0dp"
 		    	    android:layout_height="wrap_content"
 		    	    android:layout_weight="0.4"
-		    	    android:inputType="text" />
+		    	    android:inputType="text"
+		    	    android:background="@drawable/group_row" />
 		    	<LinearLayout 
 			        android:layout_width="0dp"
 				    android:layout_height="fill_parent"
@@ -179,7 +182,8 @@
 		    	    android:layout_width="0dp"
 		    	    android:layout_height="wrap_content"
 		    	    android:layout_weight="0.4"
-		    	    android:inputType="text" />
+		    	    android:inputType="text" 
+		    	    android:background="@drawable/group_row"/>
 				<LinearLayout 
 			        android:layout_width="0dp"
 				    android:layout_height="fill_parent"
@@ -215,7 +219,8 @@
 		    	    android:layout_width="0dp"
 		    	    android:layout_height="wrap_content"
 		    	    android:layout_weight="0.4"
-		    	    android:inputType="textEmailAddress" />
+		    	    android:inputType="textEmailAddress"
+		    	    android:background="@drawable/group_row" />
 		    	<LinearLayout 
 			        android:layout_width="0dp"
 				    android:layout_height="fill_parent"
@@ -253,7 +258,8 @@
 		    	    android:layout_width="0dp"
 		    	    android:layout_height="wrap_content"
 		    	    android:layout_weight="0.4"
-		    	    android:inputType="phone" />
+		    	    android:inputType="phone"
+		    	    android:background="@drawable/group_row" />
 		    	<LinearLayout 
 			        android:layout_width="0dp"
 				    android:layout_height="fill_parent"

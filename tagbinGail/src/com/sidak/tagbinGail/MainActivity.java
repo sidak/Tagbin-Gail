@@ -1,17 +1,21 @@
 package com.sidak.tagbinGail;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.provider.MediaStore.Images;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -36,8 +40,9 @@ public class MainActivity extends Activity {
 	private static final String TAG=MainActivity.class.getSimpleName();
 	private MyApplication myApp;
 	String mCurrentPhotoPath;
-	static final int REQUEST_TAKE_PHOTO = 1;
+	//static final int REQUEST_TAKE_PHOTO = 1;
 	private Uri fileUri=null; // file url to store image/video
+	private Uri imageUri=null;
 	public static final int MEDIA_TYPE_IMAGE = 1;
 
 	// directory name to store captured images and videos
@@ -112,10 +117,10 @@ public class MainActivity extends Activity {
 		myApp.setPhoneNo(phoneStr);
 		myApp.setCompanyName(cNameStr);
 		myApp.setState(stateStr);
-		if(fileUri!=null){
-			myApp.setImageUrl(fileUri.toString());
+		if(imageUri!=null){
+			myApp.setImageUrl(imageUri.toString());
 			Log.d(TAG, "name "+nameStr + "email "+emailStr+ "phone "+phoneStr+"company "+cNameStr
-					+"state "+stateStr+"image uri "+fileUri.toString());
+					+"state "+stateStr+"image uri "+imageUri.toString());
 		}
 		Log.d(TAG, "in other log"+"name "+nameStr + "email "+emailStr+ "phone "+phoneStr+"company "+cNameStr
 				+"state "+stateStr);
@@ -145,7 +150,8 @@ public class MainActivity extends Activity {
 					Toast.LENGTH_LONG).show();
 
 		} else {
-			Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+			dispatchTakePictureIntent();
+			/*Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
 			fileUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE);
 
@@ -153,9 +159,17 @@ public class MainActivity extends Activity {
 
 			// start the image capture Intent
 			startActivityForResult(intent, REQUEST_TAKE_PHOTO);
+			*/
 		}
 	}
+	static final int REQUEST_IMAGE_CAPTURE = 1;
 
+	private void dispatchTakePictureIntent() {
+	    Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+	    if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+	        startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+	    }
+	}
 	/**
 	 * Creating file uri to store image/video
 	 */
@@ -199,11 +213,23 @@ public class MainActivity extends Activity {
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
+		if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
 			Toast.makeText(MainActivity.this,
 					getResources().getString(R.string.photo_clicked),
 					Toast.LENGTH_SHORT).show();
+			
+			  Bitmap  photo = ( Bitmap ) data.getExtras(). get ("data"); 
+		         // CALL THIS METHOD TO GET THE URI FROM THE BITMAP
+		         imageUri = getImageUri(getApplicationContext(), photo);
+		         
+			
 		}
+	}
+	public   Uri  getImageUri( Context  inContext,  Bitmap  inImage) {
+	     ByteArrayOutputStream  bytes =  new   ByteArrayOutputStream ();
+	    inImage.compress( Bitmap . CompressFormat .JPEG, 100, bytes);
+	     String  path =  Images . Media .insertImage(inContext.getContentResolver(), inImage, "Title",  null );
+	     return   Uri .parse(path);
 	}
 
 }

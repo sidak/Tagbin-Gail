@@ -98,6 +98,7 @@ public class SummaryActivity extends Activity {
 		materialsLabel = (TextView) findViewById(R.id.materials_label);
 		productsLabel = (TextView) findViewById(R.id.products_label);
 		consumptionLabel = (TextView) findViewById(R.id.consumption_label);
+		imView=(ImageView)findViewById(R.id.summary_imageview);
 
 		products_str = "";
 		material_str = "";

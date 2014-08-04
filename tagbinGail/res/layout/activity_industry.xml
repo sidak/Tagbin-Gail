@@ -35,12 +35,13 @@
             android:textSize="30sp" />
 
     </LinearLayout>
-	<LinearLayout 
+
+	<LinearLayout
 	    android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="3"
-        android:orientation="vertical"
-	    >
+	    android:layout_height="wrap_content"
+	    android:layout_weight="2"
+	    android:gravity="center"
+	    android:orientation="vertical" >
 
 	<RadioGroup
 	    android:id="@+id/radioGroup"
@@ -55,25 +56,28 @@
             android:id="@+id/ind1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:onClick="onRadioButtonClick"
             android:text="@string/ind1"
-            android:textSize="22sp"
-            android:onClick="onRadioButtonClick" />
+            android:textSize="22sp" />
 
         <RadioButton
             android:id="@+id/ind2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:onClick="onRadioButtonClick"
             android:text="@string/ind2"
-            android:textSize="22sp"
-            android:onClick="onRadioButtonClick" />
+            android:textSize="22sp" />
 
         <RadioButton
             android:id="@+id/ind3"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:onClick="onRadioButtonClick"
             android:text="@string/ind3"
-            android:textSize="22sp"
-            android:onClick="onRadioButtonClick" />
+            android:textSize="22sp" />
 
         <RadioButton
             android:id="@+id/ind4"
