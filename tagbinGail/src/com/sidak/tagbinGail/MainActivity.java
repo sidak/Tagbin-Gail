@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -92,10 +93,19 @@ public class MainActivity extends Activity {
 				||cNameStr.equals("")||stateStr.equals("")){
 			Toast.makeText(this, R.string.empty_message, Toast.LENGTH_LONG).show();
 			return false;
+		}else if(!isValidEmail(emailStr)){
+			Toast.makeText(this, R.string.wrong_email, Toast.LENGTH_LONG).show();
+			return false;
 		}
 		else return true;
 	}
-
+	public final static boolean isValidEmail(CharSequence target) {
+		  if (TextUtils.isEmpty(target)) {
+		    return false;
+		  } else {
+		    return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
+		  }
+		}
 	protected void saveInfo() {
 		myApp.setName(nameStr);
 		myApp.setEmail(emailStr);

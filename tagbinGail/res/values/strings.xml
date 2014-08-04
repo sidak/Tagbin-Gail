@@ -61,5 +61,6 @@
     <string name="sum_materials">dealing polymer materials</string>
     <string name="sum_products">sector catering to</string>
     <string name="sum_consumption">consumption</string>
+    <string name="wrong_email">please a valid email id </string>
 
 </resources>
