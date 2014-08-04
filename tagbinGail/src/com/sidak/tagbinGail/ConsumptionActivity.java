@@ -31,8 +31,10 @@ public class ConsumptionActivity extends Activity {
 				if (saveInfo()) {
 					Intent intent = new Intent(ConsumptionActivity.this,
 							SummaryActivity.class);
+					intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
 					startActivity(intent);
-					
+								
 				}
 			}
 		});

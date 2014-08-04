@@ -52,15 +52,15 @@
     <string name="empty_consum_value">please enter your consumption value</string>
     <string name="title_activity_summary">SummaryActivity</string>
     <string name="hello_world">Hello world!</string>
-    <string name="sum_name">name</string>
-    <string name="sum_mail">email</string>
-    <string name="sum_phone">phone no</string>
-    <string name="sum_state">state</string>
-    <string name="sum_company_name">company name</string>
-    <string name="sum_relation">relation to polymer industry</string>
-    <string name="sum_materials">dealing polymer materials</string>
-    <string name="sum_products">sector catering to</string>
-    <string name="sum_consumption">consumption</string>
+    <string name="sum_name">Name : </string>
+    <string name="sum_mail">Email : </string>
+    <string name="sum_phone">Phone No. : </string>
+    <string name="sum_state">State : </string>
+    <string name="sum_company_name">Company Name : </string>
+    <string name="sum_relation">Relation to Polymer Industry : </string>
+    <string name="sum_materials">Dealing Polymer Materials : </string>
+    <string name="sum_products">Sector Catering To : </string>
+    <string name="sum_consumption">Consumption per Month (in MT) : </string>
     <string name="wrong_email">please a valid email id </string>
 
 </resources>

@@ -18,13 +18,13 @@ import jxl.write.WriteException;
 import jxl.write.biff.RowsExceededException;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -297,4 +297,10 @@ public class SummaryActivity extends Activity {
 		materials = myApp.getMaterials();
 		products = myApp.getProducts();
 	}
+	public void onBackPressed() {
+		   Intent intent = new Intent(Intent.ACTION_MAIN);
+		   intent.addCategory(Intent.CATEGORY_HOME);
+		   intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		   startActivity(intent);
+		 }
 }
