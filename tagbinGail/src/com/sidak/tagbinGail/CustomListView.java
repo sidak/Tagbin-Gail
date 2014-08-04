@@ -7,6 +7,7 @@ import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class CustomListView extends ListActivity {
+	private static final String TAG = CustomListView.class.getSimpleName();
 
 	// ArrayList that will hold the original Data
 	ArrayList<HashMap<String, Object>> products;
@@ -28,11 +30,7 @@ public class CustomListView extends ListActivity {
 	// the state of each CheckBox
 	boolean[] checkBoxState;
 	MyApplication myApp;
-	String [] names = { getString(R.string.sector1),
-			getString(R.string.sector2), getString(R.string.sector3),
-			getString(R.string.sector4), getString(R.string.sector5),
-			getString(R.string.sector6), getString(R.string.sector7),
-			getString(R.string.sector8) };
+	String[] names;
 
 	// If you want to use the array initializer,
 	// you cannot split the declaration and assignment.
@@ -42,6 +40,12 @@ public class CustomListView extends ListActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_products);
 		myApp = MyApplication.getInstance();
+		String[] name_copy = { getString(R.string.sector1),
+				getString(R.string.sector2), getString(R.string.sector3),
+				getString(R.string.sector4), getString(R.string.sector5),
+				getString(R.string.sector6), getString(R.string.sector7),
+				getString(R.string.sector8) };
+		names = name_copy;
 		submit = (Button) findViewById(R.id.submit_list);
 		submit.setOnClickListener(new View.OnClickListener() {
 
@@ -58,11 +62,10 @@ public class CustomListView extends ListActivity {
 		// get the LayoutInflater for inflating the customomView
 		// this will be used in the custom adapter
 		inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		//names= new String[NUM_PRODUCTS];
+		// names= new String[NUM_PRODUCTS];
 		// these arrays are just the data that
 		// I'll be using to populate the ArrayList
 		// You can use our own methods to get the data
-		
 
 		Integer[] photos = { R.drawable.p1, R.drawable.p2, R.drawable.p3,
 				R.drawable.p4, R.drawable.p5, R.drawable.p6, R.drawable.p7,
@@ -102,10 +105,11 @@ public class CustomListView extends ListActivity {
 	}
 
 	protected boolean saveInfo() {
-
+		String logged = "";
 		boolean flag = false;
 		for (int i = 0; i < NUM_PRODUCTS; i++) {
 			if (checkBoxState[i]) {
+				logged += names[i] + " ";
 				myApp.addProduct(names[i]);
 				flag = true;
 			}
@@ -114,8 +118,10 @@ public class CustomListView extends ListActivity {
 			Toast.makeText(this, getString(R.string.empty_checkboxes),
 					Toast.LENGTH_LONG).show();
 			return false;
-		} else
+		} else {
+			Log.d(TAG,logged);
 			return true;
+		}
 	}
 
 	// define your custom adapter

@@ -24,12 +24,16 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 public class SummaryActivity extends Activity {
 	private MyApplication myApp;
+	private static final String TAG = SummaryActivity.class.getSimpleName();
+
 	private String name;
+	
 	private String companyName;
 	private String state;
 	private String email;
@@ -42,17 +46,9 @@ public class SummaryActivity extends Activity {
 	private String material_str;
 	private String products_str;
 
-	private String[] val = { name, email, phoneNo, state, companyName,
-			industry, consumption };
+	private String[] val ;
 	// do materials and products separately
-	private String[] headers = { getString(R.string.sum_name),
-			getString(R.string.sum_mail), getString(R.string.sum_phone),
-			getString(R.string.sum_state),
-			getString(R.string.sum_company_name),
-			getString(R.string.sum_relation),
-			getString(R.string.sum_materials),
-			getString(R.string.sum_products),
-			getString(R.string.sum_consumption) };
+	private String[] headers;
 
 	private TextView nameLabel;
 	private TextView companyNameLabel;
@@ -77,6 +73,22 @@ public class SummaryActivity extends Activity {
 		} else {
 			setContentView(R.layout.activity_summary);
 		}
+		
+		
+		
+		 String[] headers_copy = { getString(R.string.sum_name),
+					getString(R.string.sum_mail), getString(R.string.sum_phone),
+					getString(R.string.sum_state),
+					getString(R.string.sum_company_name),
+					getString(R.string.sum_relation),
+					getString(R.string.sum_materials),
+					getString(R.string.sum_products),
+					getString(R.string.sum_consumption) };
+		 
+		 headers=headers_copy;
+		
+		 
+		 
 		nameLabel = (TextView) findViewById(R.id.name_label);
 		companyNameLabel = (TextView) findViewById(R.id.company_label);
 		stateLabel = (TextView) findViewById(R.id.state_label);
@@ -93,6 +105,16 @@ public class SummaryActivity extends Activity {
 		File root = Environment.getExternalStorageDirectory();
 		File xlFile = new File(root, "gail.xls");
 		fetchDataFromApp();
+		String[] val_copy = { name, email, phoneNo, state, companyName,
+				industry, consumption };
+		val=val_copy;
+		
+		for (int i = 0; i < materials.size(); i++) {
+			material_str += materials.get(i) + " ";
+		}
+		for (int i = 0; i < products.size(); i++) {
+			products_str += products.get(i) + " ";
+		}
 		new saveAndLoadData().execute(xlFile);
 
 		nameLabel.setText(headers[0]+" "+ name);
@@ -110,16 +132,16 @@ public class SummaryActivity extends Activity {
 	private class saveAndLoadData extends AsyncTask<File, Void, Void> {
 		private WritableCellFormat timesBoldUnderline;
 		private WritableCellFormat times;
-		private ProgressDialog Dialog = new ProgressDialog(SummaryActivity.this);
+		private ProgressDialog dialog = new ProgressDialog(SummaryActivity.this);
 
 		Bitmap mBitmap;
 
 		protected void onPreExecute() {
 			/****** NOTE: You can call UI Element here. *****/
 
-			// Progress Dialog
-			Dialog.setMessage(" Loading image from Sdcard..");
-			Dialog.show();
+			// Progress dialog
+			dialog.setMessage(" Saving data in sd card ... ");
+			dialog.show();
 		}
 
 		@Override
@@ -130,10 +152,11 @@ public class SummaryActivity extends Activity {
 			Bitmap bitmap = null;
 			Bitmap newBitmap = null;
 			Uri uri = null;
-			uri = Uri.parse(imageUrl);
-			if (uri != null)
+			
+			if (imageUrl != null){
+				uri = Uri.parse(imageUrl);
 				flag = true;
-
+			}
 			WorkbookSettings wbSettings = new WorkbookSettings();
 
 			wbSettings.setLocale(new Locale("en", "EN"));
@@ -195,7 +218,7 @@ public class SummaryActivity extends Activity {
 			// NOTE: You can call UI Element here.
 
 			// Close progress dialog
-			Dialog.dismiss();
+			dialog.dismiss();
 
 			if (mBitmap != null) {
 				// Set Image to ImageView
@@ -232,13 +255,13 @@ public class SummaryActivity extends Activity {
 			for (int i = 0; i < 6; i++) {
 				addLabel(sheet, i, 1, val[i]);
 			}
-
+			
 			for (int i = 0; i < materials.size(); i++) {
-				material_str += "# " + materials.get(i) + " ";
+				//material_str += materials.get(i) + " ";
 				addLabel(sheet, 6, i + 1, materials.get(i));
 			}
 			for (int i = 0; i < products.size(); i++) {
-				products_str += "# " + products.get(i) + " ";
+				//products_str += products.get(i) + " ";
 				addLabel(sheet, 7, i + 1, products.get(i));
 			}
 			addLabel(sheet, 8, 1, val[6]);

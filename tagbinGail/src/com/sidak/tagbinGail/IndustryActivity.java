@@ -3,13 +3,12 @@ package com.sidak.tagbinGail;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Toast;
 
 public class IndustryActivity extends Activity {
@@ -21,6 +20,7 @@ public class IndustryActivity extends Activity {
 	private EditText other;
 	private RadioGroup rGroup;
 	private MyApplication myApp;
+	private static final String TAG = IndustryActivity.class.getSimpleName();
 
 	// private LinearLayout lLayout;
 	@Override
@@ -52,10 +52,15 @@ public class IndustryActivity extends Activity {
 
 	public void onRadioButtonClick(View v) {
 		RadioButton button = (RadioButton) v;
-		if (button.isChecked()) {
-			other.setVisibility(View.VISIBLE);
-		} else
+		if (button != null && button != ind4) {
+			other.setText("");
 			other.setVisibility(View.INVISIBLE);
+		} else {
+			if (button.isChecked()) {
+				other.setVisibility(View.VISIBLE);
+			} else
+				other.setVisibility(View.INVISIBLE);
+		}
 	}
 
 	protected boolean saveInfo() {
@@ -79,6 +84,7 @@ public class IndustryActivity extends Activity {
 		} else if (selected == ind4) {
 			industry = other.getText().toString();
 			if (!industry.equals("")) {
+				Log.d(TAG, "industry name (other) : " + industry);
 				myApp.setIndustry(industry);
 				return true;
 			} else {
@@ -88,6 +94,7 @@ public class IndustryActivity extends Activity {
 			}
 		} else {
 			industry = (String) selected.getText();
+			Log.d(TAG, "industry name  : " + industry);
 			myApp.setIndustry(industry);
 			return true;
 		}

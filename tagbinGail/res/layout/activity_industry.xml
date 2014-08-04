@@ -56,21 +56,24 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/ind1"
-            android:textSize="22sp" />
+            android:textSize="22sp"
+            android:onClick="onRadioButtonClick" />
 
         <RadioButton
             android:id="@+id/ind2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/ind2"
-            android:textSize="22sp" />
+            android:textSize="22sp"
+            android:onClick="onRadioButtonClick" />
 
         <RadioButton
             android:id="@+id/ind3"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/ind3"
-            android:textSize="22sp" />
+            android:textSize="22sp"
+            android:onClick="onRadioButtonClick" />
 
         <RadioButton
             android:id="@+id/ind4"

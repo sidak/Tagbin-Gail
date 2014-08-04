@@ -3,12 +3,14 @@ package com.sidak.tagbinGail;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 public class ConsumptionActivity extends Activity {
+	private static final String TAG = ConsumptionActivity.class.getSimpleName();
 	private EditText consum;
 	private MyApplication myApp;
 	private Button submit;
@@ -39,6 +41,7 @@ public class ConsumptionActivity extends Activity {
 	protected boolean saveInfo() {
 		if (consum.getText().toString() != null) {
 			myApp.setConsumption(consum.getText().toString());
+			Log.d(TAG,consum.getText().toString() );
 			return true;
 		} else {
 			Toast.makeText(this, getString(R.string.empty_consum_value), Toast.LENGTH_LONG).show();

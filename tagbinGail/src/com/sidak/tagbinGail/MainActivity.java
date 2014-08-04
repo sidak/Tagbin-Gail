@@ -36,7 +36,7 @@ public class MainActivity extends Activity {
 	private MyApplication myApp;
 	String mCurrentPhotoPath;
 	static final int REQUEST_TAKE_PHOTO = 1;
-	private Uri fileUri; // file url to store image/video
+	private Uri fileUri=null; // file url to store image/video
 	public static final int MEDIA_TYPE_IMAGE = 1;
 
 	// directory name to store captured images and videos
@@ -104,10 +104,11 @@ public class MainActivity extends Activity {
 		myApp.setState(stateStr);
 		if(fileUri!=null){
 			myApp.setImageUrl(fileUri.toString());
-			
+			Log.d(TAG, "name "+nameStr + "email "+emailStr+ "phone "+phoneStr+"company "+cNameStr
+					+"state "+stateStr+"image uri "+fileUri.toString());
 		}
-		Log.d(TAG, "name "+nameStr + "email "+emailStr+ "phone "+phoneStr+"company "+cNameStr
-				+"state "+stateStr+"image uri "+fileUri.toString());
+		Log.d(TAG, "in other log"+"name "+nameStr + "email "+emailStr+ "phone "+phoneStr+"company "+cNameStr
+				+"state "+stateStr);
 	}
 
 	/**

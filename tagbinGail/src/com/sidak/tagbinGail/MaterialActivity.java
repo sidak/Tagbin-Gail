@@ -3,12 +3,14 @@ package com.sidak.tagbinGail;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
 public class MaterialActivity extends Activity {
+	private static final String TAG = MaterialActivity.class.getSimpleName();
 	private Button next;
 	private CheckBox mat1;
 	private CheckBox mat2;
@@ -55,9 +57,11 @@ public class MaterialActivity extends Activity {
 	}
 
 	protected boolean saveInfo() {
+		String logged="";
 		boolean flag = false;
 		for (int i = 0; i < 6; i++) {
 			if (cBoxes[i].isChecked()) {
+				logged+=cBoxes[i].getText().toString()+ " ";
 				myApp.addMaterial(cBoxes[i].getText().toString());
 				flag = true;
 			}
@@ -66,8 +70,10 @@ public class MaterialActivity extends Activity {
 			Toast.makeText(this, getString(R.string.empty_checkboxes),
 					Toast.LENGTH_LONG).show();
 			return false;
-		} else
+		} else{
+			Log.d(TAG, logged);
 			return true;
+		}
 	}
 
 }

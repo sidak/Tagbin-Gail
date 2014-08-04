@@ -99,7 +99,12 @@ public class MyApplication extends Application {
 		return products;
 	}
 	public void addProduct(String pro){
-		products.add(pro);
+		if(products!=null){
+			products.add(pro);
+			}else{
+				products= new ArrayList<String>();
+				products.add(pro);
+			}
 	}
 	public void deleteProduct(String pro){
 		products.remove(pro);
