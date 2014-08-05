@@ -9,6 +9,7 @@ import jxl.CellView;
 import jxl.Workbook;
 import jxl.WorkbookSettings;
 import jxl.format.UnderlineStyle;
+import jxl.read.biff.BiffException;
 import jxl.write.Label;
 import jxl.write.WritableCellFormat;
 import jxl.write.WritableFont;
@@ -31,6 +32,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class SummaryActivity extends Activity {
+	private static final String GAIL_XLS = "gail.xls";
+	private static final String GAIL_XLS_COPY = "gail_copy.xls";
 	private MyApplication myApp;
 	private static final String TAG = SummaryActivity.class.getSimpleName();
 
@@ -103,7 +106,7 @@ public class SummaryActivity extends Activity {
 		material_str = "";
 
 		File root = Environment.getExternalStorageDirectory();
-		File xlFile = new File(root, "gail.xls");
+		File xlFile = new File(root, GAIL_XLS);
 		fetchDataFromApp();
 		String[] val_copy = { name, email, phoneNo, state, companyName,
 				industry, consumption };
@@ -141,7 +144,7 @@ public class SummaryActivity extends Activity {
 		@Override
 		protected Void doInBackground(File... params) {
 			// TODO Auto-generated method stub
-
+			
 			boolean flag = false;
 			Bitmap bitmap = null;
 			Bitmap newBitmap = null;
@@ -156,21 +159,60 @@ public class SummaryActivity extends Activity {
 			wbSettings.setLocale(new Locale("en", "EN"));
 
 			WritableWorkbook workbook = null;
+			
+			File root1= Environment.getExternalStorageDirectory();
+			File xls= new File(root1.getAbsolutePath()+"/"+GAIL_XLS);
+			if(xls.exists()){
+				try{
+				Workbook original=Workbook.getWorkbook(new File(root1.getAbsolutePath()+"/"+GAIL_XLS));
+				WritableWorkbook copy = Workbook.createWorkbook(new File(root1.getAbsolutePath()+"/"+GAIL_XLS_COPY), original);
+				// copy initial file into this one
+				WritableSheet sheet_copy = copy.getSheet(0);
+				int numRow= sheet_copy.getRows();
+				// this numRown also include the header column heads, so it is same as index
+				// add more data to that list
+				createLabel(sheet_copy, numRow);
+				copy.write();
+				copy.close();
+				// delete the original file
+				File file = new File(root1.getAbsolutePath()+"/"+GAIL_XLS);
+				boolean deleted = file.delete();
+				
+				// renamed the copy file into original file
+				File from = new File(root1, GAIL_XLS_COPY);
+				File to = new File(root1,GAIL_XLS);
+				from.renameTo(to);
+				}
+				catch (WriteException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				catch(BiffException e ){
+					e.printStackTrace();
+				}
+				catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} 
+			}else{
+			
 
-			try {
-				workbook = Workbook.createWorkbook(params[0], wbSettings);
-				workbook.createSheet("Report", 0);
-				WritableSheet excelSheet = workbook.getSheet(0);
-				createLabel(excelSheet);
-				workbook.write();
-				workbook.close();
-			} catch (WriteException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+				try {
+					workbook = Workbook.createWorkbook(params[0], wbSettings);
+					workbook.createSheet("Report", 0);
+					WritableSheet excelSheet = workbook.getSheet(0);
+					createHeader(excelSheet);
+					createLabel(excelSheet,1);
+					workbook.write();
+					workbook.close();
+				} catch (WriteException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				}
 
 			if (flag) {
 				try {
@@ -221,10 +263,57 @@ public class SummaryActivity extends Activity {
 			}
 			materialsLabel.setText(headers[6] + " " + material_str);
 			productsLabel.setText(headers[7] + " " + products_str);
+			material_str="";
+			products_str="";
 
 		}
+		// row indicates the row number with value as total rows - 1(for header)
+		private void createLabel(WritableSheet sheet, int row) throws WriteException {
+			// Lets create a times font
+			WritableFont times10pt = new WritableFont(WritableFont.TIMES, 10);
+			// Define the cell format
+			times = new WritableCellFormat(times10pt);
+			// Lets automatically wrap the cells
+			times.setWrap(true);
 
-		private void createLabel(WritableSheet sheet) throws WriteException {
+			// create create a bold font with underlines
+			WritableFont times10ptBoldUnderline = new WritableFont(
+					WritableFont.TIMES, 10, WritableFont.BOLD, false,
+					UnderlineStyle.SINGLE);
+			timesBoldUnderline = new WritableCellFormat(times10ptBoldUnderline);
+			// Lets automatically wrap the cells
+			timesBoldUnderline.setWrap(true);
+
+			CellView cv = new CellView();
+			cv.setFormat(times);
+			cv.setFormat(timesBoldUnderline);
+			cv.setAutosize(true);
+
+			
+			for (int i = 0; i < 6; i++) {
+				addLabel(sheet, i, row, val[i]);
+			}
+			
+			for (int i = 0; i < materials.size() - 1; i++) {
+				material_str += materials.get(i) + " , ";
+			}
+			if (materials.size() - 1 >= 0) {
+				material_str += materials.get(materials.size() - 1);
+			}
+			addLabel(sheet, 6, row, material_str);
+			Log.d(TAG, "material " + material_str);
+			for (int i = 0; i < products.size() - 1; i++) {
+				products_str += products.get(i) + " , ";
+			}
+			if (products.size() - 1 >= 0) {
+				products_str += products.get(products.size() - 1);
+			}
+			addLabel(sheet, 7, row, products_str);
+			addLabel(sheet, 8, row, val[6]);
+			addLabel(sheet, 9, row, imageUrl);
+
+		}
+		private void createHeader(WritableSheet sheet) throws WriteException {
 			// Lets create a times font
 			WritableFont times10pt = new WritableFont(WritableFont.TIMES, 10);
 			// Define the cell format
@@ -248,30 +337,7 @@ public class SummaryActivity extends Activity {
 			for (int i = 0; i < NUM_TV; i++) {
 				addCaption(sheet, i, 0, headers[i]);
 			}
-			for (int i = 0; i < 6; i++) {
-				addLabel(sheet, i, 1, val[i]);
-			}
-
-			for (int i = 0; i < materials.size() - 1; i++) {
-				material_str += materials.get(i) + " , ";
-			}
-			if (materials.size() - 1 >= 0) {
-				material_str += materials.get(materials.size() - 1);
-			}
-			addLabel(sheet, 6, 1, material_str);
-			Log.d(TAG, "material " + material_str);
-			for (int i = 0; i < products.size() - 1; i++) {
-				products_str += products.get(i) + " , ";
-			}
-			if (products.size() - 1 >= 0) {
-				products_str += products.get(products.size() - 1);
-			}
-			addLabel(sheet, 7, 1, products_str);
-			addLabel(sheet, 8, 1, val[6]);
-			addLabel(sheet, 9, 1, imageUrl);
-
 		}
-
 		private void addCaption(WritableSheet sheet, int column, int row,
 				String s) throws RowsExceededException, WriteException {
 			Label label;
@@ -303,10 +369,23 @@ public class SummaryActivity extends Activity {
 
 	@SuppressLint("InlinedApi")
 	public void onBackPressed() {
+		resetData();
 		Intent intent = new Intent(SummaryActivity.this, MainActivity.class);
 		// intent.addCategory(Intent.CATEGORY_HOME);
 		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
 		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		startActivity(intent);
+	}
+	public void resetData(){
+		myApp.setName("");
+		myApp.setCompanyName("");
+		myApp.setEmail("");
+		myApp.setState("");
+		myApp.setPhoneNo("");
+		myApp.setIndustry("");
+		myApp.setConsumption("");
+		myApp.setImageUrl("");
+		materials.removeAll(materials); 
+		products.removeAll(products);
 	}
 }

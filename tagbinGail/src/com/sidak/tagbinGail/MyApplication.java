@@ -117,4 +117,5 @@ public class MyApplication extends Application {
 		materials= new ArrayList<String>();
 		
 	}
+	
 }

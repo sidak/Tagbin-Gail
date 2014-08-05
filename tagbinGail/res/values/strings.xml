@@ -57,5 +57,6 @@
     <string name="sum_imageUrl">Image Url</string>
     <string name="sum_consumption">Consumption per Month (in MT) : </string>
     <string name="wrong_email">please a valid email id </string>
+    <string name="title_activity_prize">PrizeActivity</string>
 
 </resources>
