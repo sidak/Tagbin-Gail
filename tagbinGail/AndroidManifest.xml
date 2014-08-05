@@ -61,7 +61,7 @@
         </activity>
         <activity
             android:name="com.sidak.tagbinGail.PrizeActivity"
-            android:label="@string/title_activity_prize" >
+             android:screenOrientation="landscape" >
         </activity>
     </application>
 

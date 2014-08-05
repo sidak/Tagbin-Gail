@@ -58,5 +58,7 @@
     <string name="sum_consumption">Consumption per Month (in MT) : </string>
     <string name="wrong_email">please a valid email id </string>
     <string name="title_activity_prize">PrizeActivity</string>
-
+	<string name="prize_label">Press button to try your Luck</string>
+	<string name="prize_won"> Congratulations! You won x </string>
+	<string name="prize_lost">Sorry, better luck next time</string>
 </resources>

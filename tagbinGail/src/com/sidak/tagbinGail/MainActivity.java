@@ -122,7 +122,7 @@ public class MainActivity extends Activity {
 				if(validateInfo()){
 					saveInfo();
 					Intent intent = new Intent(MainActivity.this,
-							IndustryActivity.class);
+							PrizeActivity.class);
 					startActivity(intent);
 				}
 			}
