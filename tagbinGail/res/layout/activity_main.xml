@@ -177,13 +177,12 @@
 		    	    android:layout_weight="0.4"
 		    	    android:textSize="20sp" />
 
-		    	<EditText
-		    	    android:id="@+id/state_value"
+		    	<Spinner
+		    	    android:id="@+id/state_spinner"
 		    	    android:layout_width="0dp"
 		    	    android:layout_height="wrap_content"
 		    	    android:layout_weight="0.4"
-		    	    android:inputType="text" 
-		    	    android:background="@drawable/group_row"/>
+		    	    android:inputType="text" />
 				<LinearLayout 
 			        android:layout_width="0dp"
 				    android:layout_height="fill_parent"

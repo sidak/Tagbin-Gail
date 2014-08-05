@@ -298,8 +298,9 @@ public class SummaryActivity extends Activity {
 		products = myApp.getProducts();
 	}
 	public void onBackPressed() {
-		   Intent intent = new Intent(Intent.ACTION_MAIN);
-		   intent.addCategory(Intent.CATEGORY_HOME);
+		   Intent intent = new Intent(SummaryActivity.this, MainActivity.class);
+		   //intent.addCategory(Intent.CATEGORY_HOME);
+		   intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
 		   intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		   startActivity(intent);
 		 }

@@ -19,8 +19,12 @@ import android.provider.MediaStore.Images;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
@@ -30,14 +34,48 @@ public class MainActivity extends Activity {
 	private EditText cName;
 	private EditText email;
 	private EditText phone;
-	private EditText state;
-
+	//private EditText state;
+	
+	private String[] state_arr={
+			"Andhra Pradesh",
+			"ArunachalPradesh",
+			"Assam",
+			"Bihar",
+			"Chhattisgarh",
+			"Goa",
+			"Gujarat",
+			"Haryana",
+			"Himachal Pradesh",
+			"Jammu Kashmir",
+			"Jharkhand",
+			"Karnataka",
+			"Kerala",
+			"Madhya Pradesh",
+			"Maharashtra",
+			"Manipur",
+			"Meghalaya",
+			"Mizoram",
+			"Nagaland",
+			"Odisha",
+			"Punjab",
+			"Rajasthan",
+			"Sikkim",
+			"Tamil Nadu",
+			"Telangana",
+			"Tripura",
+			"Uttar Pradesh",
+			"Uttarakhand",
+			"West Bengal"
+	};
+	
+	
 	private String nameStr;
 	private String cNameStr;
 	private String emailStr;
 	private String phoneStr;
 	private String stateStr;
 	private static final String TAG=MainActivity.class.getSimpleName();
+	private Spinner stateSpinner;
 	private MyApplication myApp;
 	String mCurrentPhotoPath;
 	//static final int REQUEST_TAKE_PHOTO = 1;
@@ -53,6 +91,28 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		myApp = MyApplication.getInstance();
 		setContentView(R.layout.activity_main);
+		stateSpinner=(Spinner)findViewById(R.id.state_spinner);
+		ArrayAdapter<String> adapter_state = new ArrayAdapter<String>(this,
+			    android.R.layout.simple_spinner_item, state_arr);
+		adapter_state
+	    .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+	  stateSpinner.setAdapter(adapter_state);
+	  stateSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+		  
+          @Override
+          public void onItemSelected(AdapterView<?> adapter, View v,
+                  int position, long id) {
+        	  stateSpinner.setSelection(position);
+			  stateStr = (String) stateSpinner.getSelectedItem();
+          }
+
+          @Override
+          public void onNothingSelected(AdapterView<?> arg0) {
+              // TODO Auto-generated method stub
+
+          }
+      });
+		
 		next = (Button) findViewById(R.id.next_label);
 		next.setOnClickListener(new View.OnClickListener() {
 
@@ -76,20 +136,27 @@ public class MainActivity extends Activity {
 				captureImage();
 			}
 		});
-		state = (EditText) findViewById(R.id.state_value);
+		//state = (EditText) findViewById(R.id.state_value);
 		name = (EditText) findViewById(R.id.name_val);
 		email = (EditText) findViewById(R.id.email_value);
 		phone = (EditText) findViewById(R.id.phone_value);
 		cName = (EditText) findViewById(R.id.company_value);
 
 	}
+	
+	public void onItemSelected(AdapterView<?> parent, View view, int position,
+			   long id) {
+			  
+			  
+			 }
 
+	
 	protected void getValueFromEdittext() {
 		nameStr = name.getText().toString();
 		emailStr = email.getText().toString();
 		phoneStr = phone.getText().toString();
 		cNameStr = cName.getText().toString();
-		stateStr = state.getText().toString();
+		//stateStr = state.getText().toString();
 	}
 
 	protected boolean validateInfo() {
