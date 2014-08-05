@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/industry_layout"
-    android:background="@drawable/pages_a"
+    android:background="@drawable/pages_b"
     android:gravity="center"
     android:orientation="vertical"
     android:weightSum="8.5"

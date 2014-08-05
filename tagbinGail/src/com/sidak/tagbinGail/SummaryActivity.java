@@ -16,6 +16,7 @@ import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
 import jxl.write.biff.RowsExceededException;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -25,6 +26,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -33,7 +35,7 @@ public class SummaryActivity extends Activity {
 	private static final String TAG = SummaryActivity.class.getSimpleName();
 
 	private String name;
-	
+
 	private String companyName;
 	private String state;
 	private String email;
@@ -46,7 +48,7 @@ public class SummaryActivity extends Activity {
 	private String material_str;
 	private String products_str;
 
-	private String[] val ;
+	private String[] val;
 	// do materials and products separately
 	private String[] headers;
 
@@ -60,7 +62,7 @@ public class SummaryActivity extends Activity {
 	private TextView productsLabel;
 	private TextView consumptionLabel;
 
-	private static final int NUM_TV = 9;
+	private static final int NUM_TV = 10;
 	private String imageUrl;
 	private ImageView imView;
 
@@ -73,22 +75,19 @@ public class SummaryActivity extends Activity {
 		} else {
 			setContentView(R.layout.activity_summary);
 		}
-		
-		
-		
-		 String[] headers_copy = { getString(R.string.sum_name),
-					getString(R.string.sum_mail), getString(R.string.sum_phone),
-					getString(R.string.sum_state),
-					getString(R.string.sum_company_name),
-					getString(R.string.sum_relation),
-					getString(R.string.sum_materials),
-					getString(R.string.sum_products),
-					getString(R.string.sum_consumption) };
-		 
-		 headers=headers_copy;
-		
-		 
-		 
+
+		String[] headers_copy = { getString(R.string.sum_name),
+				getString(R.string.sum_mail), getString(R.string.sum_phone),
+				getString(R.string.sum_state),
+				getString(R.string.sum_company_name),
+				getString(R.string.sum_relation),
+				getString(R.string.sum_materials),
+				getString(R.string.sum_products),
+				getString(R.string.sum_consumption),
+				getString(R.string.sum_imageUrl) };
+
+		headers = headers_copy;
+
 		nameLabel = (TextView) findViewById(R.id.name_label);
 		companyNameLabel = (TextView) findViewById(R.id.company_label);
 		stateLabel = (TextView) findViewById(R.id.state_label);
@@ -98,35 +97,29 @@ public class SummaryActivity extends Activity {
 		materialsLabel = (TextView) findViewById(R.id.materials_label);
 		productsLabel = (TextView) findViewById(R.id.products_label);
 		consumptionLabel = (TextView) findViewById(R.id.consumption_label);
-		imView=(ImageView)findViewById(R.id.summary_imageview);
+		imView = (ImageView) findViewById(R.id.summary_imageview);
 
 		products_str = "";
 		material_str = "";
-		
+
 		File root = Environment.getExternalStorageDirectory();
 		File xlFile = new File(root, "gail.xls");
 		fetchDataFromApp();
 		String[] val_copy = { name, email, phoneNo, state, companyName,
 				industry, consumption };
-		val=val_copy;
-		
-		for (int i = 0; i < materials.size(); i++) {
-			material_str += materials.get(i) + " ";
-		}
-		for (int i = 0; i < products.size(); i++) {
-			products_str += products.get(i) + " ";
-		}
+		val = val_copy;
+
 		new saveAndLoadData().execute(xlFile);
 
-		nameLabel.setText(headers[0]+" "+ name);
-		companyNameLabel.setText(headers[4]+" "+companyName);
-		stateLabel.setText(headers[3]+" "+state);
-		emailLabel.setText(headers[1]+" "+email);
-		phoneNoLabel.setText(headers[2]+" "+phoneNo);
-		industryLabel.setText(headers[5]+" "+industry);
-		consumptionLabel.setText(headers[8]+" "+consumption);
-		materialsLabel.setText(headers[6]+" "+material_str);
-		productsLabel.setText(headers[7]+" "+products_str);
+		nameLabel.setText(headers[0] + " " + name);
+		companyNameLabel.setText(headers[4] + " " + companyName);
+		stateLabel.setText(headers[3] + " " + state);
+		emailLabel.setText(headers[1] + " " + email);
+		phoneNoLabel.setText(headers[2] + " " + phoneNo);
+		industryLabel.setText(headers[5] + " " + industry);
+		consumptionLabel.setText(headers[8] + " " + consumption);
+		//materialsLabel.setText(headers[6] + " " + material_str);
+		//productsLabel.setText(headers[7] + " " + products_str);
 
 	}
 
@@ -153,8 +146,8 @@ public class SummaryActivity extends Activity {
 			Bitmap bitmap = null;
 			Bitmap newBitmap = null;
 			Uri uri = null;
-			
-			if (imageUrl != null){
+
+			if (imageUrl != null) {
 				uri = Uri.parse(imageUrl);
 				flag = true;
 			}
@@ -223,9 +216,11 @@ public class SummaryActivity extends Activity {
 
 			if (mBitmap != null) {
 				// Set Image to ImageView
-
+				
 				imView.setImageBitmap(mBitmap);
 			}
+			materialsLabel.setText(headers[6] + " " + material_str);
+			productsLabel.setText(headers[7] + " " + products_str);
 
 		}
 
@@ -256,16 +251,24 @@ public class SummaryActivity extends Activity {
 			for (int i = 0; i < 6; i++) {
 				addLabel(sheet, i, 1, val[i]);
 			}
-			
-			for (int i = 0; i < materials.size(); i++) {
-				//material_str += materials.get(i) + " ";
-				addLabel(sheet, 6, i + 1, materials.get(i));
+
+			for (int i = 0; i < materials.size() - 1; i++) {
+				material_str += materials.get(i) + " , ";
 			}
-			for (int i = 0; i < products.size(); i++) {
-				//products_str += products.get(i) + " ";
-				addLabel(sheet, 7, i + 1, products.get(i));
+			if (materials.size() - 1 >= 0) {
+				material_str += materials.get(materials.size() - 1);
 			}
+			addLabel(sheet, 6, 1, material_str);
+			Log.d(TAG, "material " + material_str);
+			for (int i = 0; i < products.size() - 1; i++) {
+				products_str += products.get(i) + " , ";
+			}
+			if (products.size() - 1 >= 0) {
+				products_str += products.get(products.size() - 1);
+			}
+			addLabel(sheet, 7, 1, products_str);
 			addLabel(sheet, 8, 1, val[6]);
+			addLabel(sheet, 9, 1, imageUrl);
 
 		}
 
@@ -297,11 +300,13 @@ public class SummaryActivity extends Activity {
 		materials = myApp.getMaterials();
 		products = myApp.getProducts();
 	}
+
+	@SuppressLint("InlinedApi")
 	public void onBackPressed() {
-		   Intent intent = new Intent(SummaryActivity.this, MainActivity.class);
-		   //intent.addCategory(Intent.CATEGORY_HOME);
-		   intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-		   intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		   startActivity(intent);
-		 }
+		Intent intent = new Intent(SummaryActivity.this, MainActivity.class);
+		// intent.addCategory(Intent.CATEGORY_HOME);
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		startActivity(intent);
+	}
 }

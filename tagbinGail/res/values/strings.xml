@@ -11,7 +11,7 @@
     <string name="next_label">Next</string>
     <string name="click_pic_label">Click Picture of Visiting Card</string>
     <string name="polymer_industry_label">How are you related to Polymer industry:</string>
-    <string name="ind1">Manufacturer / Processor</string>
+    <string name="ind1">Processor</string>
     <string name="ind2">Trader</string>
     <string name="ind3">Existing GAIL Customer</string>
     <string name="mandatory"> * </string>
@@ -54,6 +54,7 @@
     <string name="sum_relation">Relation to Polymer Industry : </string>
     <string name="sum_materials">Dealing Polymer Materials : </string>
     <string name="sum_products">Sector Catering To : </string>
+    <string name="sum_imageUrl">Image Url</string>
     <string name="sum_consumption">Consumption per Month (in MT) : </string>
     <string name="wrong_email">please a valid email id </string>
 
