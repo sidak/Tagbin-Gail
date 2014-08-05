@@ -16,12 +16,11 @@
     <application
         android:name="com.sidak.tagbinGail.MyApplication"
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/app_button"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name="com.sidak.tagbinGail.MainActivity"
-            android:label="@string/app_name"
             android:screenOrientation="landscape" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,7 +28,6 @@
         </activity>
         <activity
             android:name="com.sidak.tagbinGail.SplashScreenActivity"
-            android:label="@string/title_activity_splash_screen"
             android:screenOrientation="landscape" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,33 +37,27 @@
         </activity>
         <activity
             android:name="com.sidak.tagbinGail.IndustryActivity"
-            android:label="@string/title_activity_industry"
             android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name="com.sidak.tagbinGail.MaterialActivity"
-            android:label="@string/title_activity_material"
             android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name="com.sidak.tagbinGail.ConsumptionActivity"
-            android:label="@string/title_activity_consumption"
             android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name="com.sidak.tagbinGail.ProductsActivity"
-            android:label="@string/title_activity_products"
             android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name="com.sidak.tagbinGail.CustomListView"
-            android:label="@string/title_activity_products"
             android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name="com.sidak.tagbinGail.SummaryActivity"
-            android:label="@string/title_activity_summary"
-             android:screenOrientation="landscape" >
+            android:screenOrientation="landscape" >
         </activity>
     </application>
 

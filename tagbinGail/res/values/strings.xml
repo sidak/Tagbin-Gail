@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">GAIL India</string>
-    <string name="title_activity_splash_screen">GAIL India </string>
+    <string name="app_name">GAIL</string>
     <string name="register_label">User Registration</string>
     <string name="name_label">Name * </string>
     <string name="company_label">Company Name * </string>
@@ -43,14 +42,9 @@
     <string name="empty_message">please enter all the fields</string>
     <string name="empty_radio">please select one of them</string>
     <string name="empty_others">please enter the OTHERS field</string>
-    <string name="title_activity_industry">GAIL India </string>
     <string name="empty_checkboxes">please select one or more</string>
-    <string name="title_activity_material">GAIL India </string>
     <string name="alphanumeric">(alphanumeric)</string>
-    <string name="title_activity_consumption">GAIL India </string>
-    <string name="title_activity_products">GAIL India </string>
     <string name="empty_consum_value">please enter your consumption value</string>
-    <string name="title_activity_summary">GAIL India </string>
     <string name="hello_world">Hello world!</string>
     <string name="sum_name">Name : </string>
     <string name="sum_mail">Email : </string>
