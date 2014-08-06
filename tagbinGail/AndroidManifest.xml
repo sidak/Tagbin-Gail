@@ -48,10 +48,6 @@
             android:screenOrientation="landscape" >
         </activity>
         <activity
-            android:name="com.sidak.tagbinGail.ProductsActivity"
-            android:screenOrientation="landscape" >
-        </activity>
-        <activity
             android:name="com.sidak.tagbinGail.CustomListView"
             android:screenOrientation="landscape" >
         </activity>
@@ -61,7 +57,11 @@
         </activity>
         <activity
             android:name="com.sidak.tagbinGail.PrizeActivity"
-             android:screenOrientation="landscape" >
+            android:screenOrientation="landscape" >
+        </activity>
+        <activity
+            android:name="com.sidak.tagbinGail.DisplayPrizeActivity"
+            android:screenOrientation="landscape" >
         </activity>
     </application>
 

@@ -37,11 +37,16 @@ public class MainActivity extends Activity {
 	//private EditText state;
 	
 	private String[] state_arr={
+			"Andaman and Nicobar Islands",
 			"Andhra Pradesh",
 			"ArunachalPradesh",
 			"Assam",
 			"Bihar",
+			"Chandigarh",
 			"Chhattisgarh",
+			"Dadar and Nagar Haveli",
+			"Daman and Diu",
+			"Delhi (NCT)",
 			"Goa",
 			"Gujarat",
 			"Haryana",
@@ -50,6 +55,7 @@ public class MainActivity extends Activity {
 			"Jharkhand",
 			"Karnataka",
 			"Kerala",
+			"Lakshadweep",
 			"Madhya Pradesh",
 			"Maharashtra",
 			"Manipur",
@@ -57,6 +63,7 @@ public class MainActivity extends Activity {
 			"Mizoram",
 			"Nagaland",
 			"Odisha",
+			"Pondicherry",
 			"Punjab",
 			"Rajasthan",
 			"Sikkim",

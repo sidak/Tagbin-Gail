@@ -67,7 +67,7 @@ public class CustomListView extends ListActivity {
 		// I'll be using to populate the ArrayList
 		// You can use our own methods to get the data
 
-		Integer[] photos = { R.drawable.p1, R.drawable.p2, R.drawable.p3,
+		Integer[] photos = { R.drawable.p1, R.drawable.p2, R.drawable.p3_a,
 				R.drawable.p4, R.drawable.p5, R.drawable.p6, R.drawable.p7,
 				R.drawable.p8 };
 

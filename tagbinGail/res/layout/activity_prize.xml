@@ -2,79 +2,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/industry_layout"
     android:background="@drawable/pages_b"
     android:gravity="center"
     android:orientation="vertical"
-    android:weightSum="8.5"
+    android:weightSum="3.8"
     tools:context="${packageName}.${activityClass}" >
-	
-	<LinearLayout 
-	    android:layout_height="wrap_content"
-	    android:layout_width="fill_parent"
-	    android:orientation="vertical"
-	    android:layout_weight="1.5"
-	    
-	    >
-	    
-	</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+    </LinearLayout>
+
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="2.5"
+        android:layout_weight="0.4"
         android:gravity="center"
-        
         android:orientation="vertical" >
 
-        <Button
-            android:id="@+id/prize_text"
+        <ImageButton
+            android:id="@+id/prize_text_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/prize_label"
-            android:textSize="30sp" />
+            android:background="@null"
+            android:src="@drawable/luck2" />
 
     </LinearLayout>
-	<LinearLayout 
-	    android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="center"
-	    >
 
-	<VideoView
-	    android:id="@+id/prize_video"
-	    android:layout_width="300dp"
-	    android:layout_height="300dp"
-	    android:gravity="center"
-	    
-	    />
-
-    </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_weight="0.4"
         android:gravity="center"
         android:orientation="vertical" >
 
-        <Button
-            android:id="@+id/next_button"
-            android:layout_width="200dp"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/next_label" />
+            android:text="@string/prize_label"
+            android:textColor="#89AB23"
+            android:textSize="22sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
-    
-    <LinearLayout 
-	    android:layout_height="wrap_content"
-	    android:layout_width="fill_parent"
-	    android:orientation="vertical"
-	    android:layout_weight="1.5"
-	    >
-	    
-	</LinearLayout>
-	
+
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.5"
+        android:orientation="vertical" >
+    </LinearLayout>
+
 </LinearLayout>
