@@ -27,18 +27,22 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SummaryActivity extends Activity {
 	private static final String GAIL_XLS = "gail.xls";
 	private static final String GAIL_XLS_COPY = "gail_copy.xls";
 	private MyApplication myApp;
 	private static final String TAG = SummaryActivity.class.getSimpleName();
-
+	private Button finish;
 	private String name;
-
+	private boolean doubleBackToExitPressedOnce = false;
 	private String companyName;
 	private String state;
 	private String email;
@@ -78,7 +82,15 @@ public class SummaryActivity extends Activity {
 		} else {
 			setContentView(R.layout.activity_summary);
 		}
+		finish = (Button) findViewById(R.id.finish_label);
+		finish.setOnClickListener(new View.OnClickListener() {
 
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				goToMain();
+			}
+		});
 		String[] headers_copy = { getString(R.string.sum_name),
 				getString(R.string.sum_mail), getString(R.string.sum_phone),
 				getString(R.string.sum_state),
@@ -121,8 +133,8 @@ public class SummaryActivity extends Activity {
 		phoneNoLabel.setText(headers[2] + " " + phoneNo);
 		industryLabel.setText(headers[5] + " " + industry);
 		consumptionLabel.setText(headers[8] + " " + consumption);
-		//materialsLabel.setText(headers[6] + " " + material_str);
-		//productsLabel.setText(headers[7] + " " + products_str);
+		// materialsLabel.setText(headers[6] + " " + material_str);
+		// productsLabel.setText(headers[7] + " " + products_str);
 
 	}
 
@@ -134,7 +146,7 @@ public class SummaryActivity extends Activity {
 		Bitmap mBitmap;
 
 		protected void onPreExecute() {
-			/****** NOTE: You can call UI Element here. *****/
+			/****** NOTE: call UI Element here. *****/
 
 			// Progress dialog
 			dialog.setMessage(" Saving data in sd card ... ");
@@ -144,7 +156,7 @@ public class SummaryActivity extends Activity {
 		@Override
 		protected Void doInBackground(File... params) {
 			// TODO Auto-generated method stub
-			
+
 			boolean flag = false;
 			Bitmap bitmap = null;
 			Bitmap newBitmap = null;
@@ -159,50 +171,51 @@ public class SummaryActivity extends Activity {
 			wbSettings.setLocale(new Locale("en", "EN"));
 
 			WritableWorkbook workbook = null;
-			
-			File root1= Environment.getExternalStorageDirectory();
-			File xls= new File(root1.getAbsolutePath()+"/"+GAIL_XLS);
-			if(xls.exists()){
-				try{
-				Workbook original=Workbook.getWorkbook(new File(root1.getAbsolutePath()+"/"+GAIL_XLS));
-				WritableWorkbook copy = Workbook.createWorkbook(new File(root1.getAbsolutePath()+"/"+GAIL_XLS_COPY), original);
-				// copy initial file into this one
-				WritableSheet sheet_copy = copy.getSheet(0);
-				int numRow= sheet_copy.getRows();
-				// this numRown also include the header column heads, so it is same as index
-				// add more data to that list
-				createLabel(sheet_copy, numRow);
-				copy.write();
-				copy.close();
-				// delete the original file
-				File file = new File(root1.getAbsolutePath()+"/"+GAIL_XLS);
-				boolean deleted = file.delete();
-				
-				// renamed the copy file into original file
-				File from = new File(root1, GAIL_XLS_COPY);
-				File to = new File(root1,GAIL_XLS);
-				from.renameTo(to);
-				}
-				catch (WriteException e) {
+
+			File root1 = Environment.getExternalStorageDirectory();
+			File xls = new File(root1.getAbsolutePath() + "/" + GAIL_XLS);
+			if (xls.exists()) {
+				try {
+					Workbook original = Workbook.getWorkbook(new File(root1
+							.getAbsolutePath() + "/" + GAIL_XLS));
+					WritableWorkbook copy = Workbook.createWorkbook(new File(
+							root1.getAbsolutePath() + "/" + GAIL_XLS_COPY),
+							original);
+					// copy initial file into this one
+					WritableSheet sheet_copy = copy.getSheet(0);
+					int numRow = sheet_copy.getRows();
+					// this numRown also include the header column heads, so it
+					// is same as index
+					// add more data to that list
+					createLabel(sheet_copy, numRow);
+					copy.write();
+					copy.close();
+					// delete the original file
+					File file = new File(root1.getAbsolutePath() + "/"
+							+ GAIL_XLS);
+					boolean deleted = file.delete();
+
+					// renamed the copy file into original file
+					File from = new File(root1, GAIL_XLS_COPY);
+					File to = new File(root1, GAIL_XLS);
+					from.renameTo(to);
+				} catch (WriteException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (BiffException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				catch(BiffException e ){
-					e.printStackTrace();
-				}
-				catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} 
-			}else{
-			
+			} else {
 
 				try {
 					workbook = Workbook.createWorkbook(params[0], wbSettings);
 					workbook.createSheet("Report", 0);
 					WritableSheet excelSheet = workbook.getSheet(0);
 					createHeader(excelSheet);
-					createLabel(excelSheet,1);
+					createLabel(excelSheet, 1);
 					workbook.write();
 					workbook.close();
 				} catch (WriteException e) {
@@ -212,7 +225,7 @@ public class SummaryActivity extends Activity {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				}
+			}
 
 			if (flag) {
 				try {
@@ -239,8 +252,6 @@ public class SummaryActivity extends Activity {
 					}
 				} catch (IOException e) {
 					// Error fetching image, try to recover
-
-					/********* Cancel execution of this task. **********/
 					cancel(true);
 				}
 			}
@@ -258,17 +269,19 @@ public class SummaryActivity extends Activity {
 
 			if (mBitmap != null) {
 				// Set Image to ImageView
-				
+
 				imView.setImageBitmap(mBitmap);
 			}
 			materialsLabel.setText(headers[6] + " " + material_str);
 			productsLabel.setText(headers[7] + " " + products_str);
-			material_str="";
-			products_str="";
+			material_str = "";
+			products_str = "";
 
 		}
+
 		// row indicates the row number with value as total rows - 1(for header)
-		private void createLabel(WritableSheet sheet, int row) throws WriteException {
+		private void createLabel(WritableSheet sheet, int row)
+				throws WriteException {
 			// Lets create a times font
 			WritableFont times10pt = new WritableFont(WritableFont.TIMES, 10);
 			// Define the cell format
@@ -289,11 +302,10 @@ public class SummaryActivity extends Activity {
 			cv.setFormat(timesBoldUnderline);
 			cv.setAutosize(true);
 
-			
 			for (int i = 0; i < 6; i++) {
 				addLabel(sheet, i, row, val[i]);
 			}
-			
+
 			for (int i = 0; i < materials.size() - 1; i++) {
 				material_str += materials.get(i) + " , ";
 			}
@@ -313,6 +325,7 @@ public class SummaryActivity extends Activity {
 			addLabel(sheet, 9, row, imageUrl);
 
 		}
+
 		private void createHeader(WritableSheet sheet) throws WriteException {
 			// Lets create a times font
 			WritableFont times10pt = new WritableFont(WritableFont.TIMES, 10);
@@ -338,6 +351,7 @@ public class SummaryActivity extends Activity {
 				addCaption(sheet, i, 0, headers[i]);
 			}
 		}
+
 		private void addCaption(WritableSheet sheet, int column, int row,
 				String s) throws RowsExceededException, WriteException {
 			Label label;
@@ -368,7 +382,7 @@ public class SummaryActivity extends Activity {
 	}
 
 	@SuppressLint("InlinedApi")
-	public void onBackPressed() {
+	public void goToMain() {
 		resetData();
 		Intent intent = new Intent(SummaryActivity.this, MainActivity.class);
 		// intent.addCategory(Intent.CATEGORY_HOME);
@@ -376,7 +390,31 @@ public class SummaryActivity extends Activity {
 		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		startActivity(intent);
 	}
-	public void resetData(){
+
+	@Override
+	public void onBackPressed() {
+		if (doubleBackToExitPressedOnce) {
+			Intent intent = new Intent(Intent.ACTION_MAIN);
+			intent.addCategory(Intent.CATEGORY_HOME);
+			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			startActivity(intent);
+			return;
+		}
+
+		this.doubleBackToExitPressedOnce = true;
+		Toast.makeText(this, "Please click BACK again to exit",
+				Toast.LENGTH_SHORT).show();
+
+		new Handler().postDelayed(new Runnable() {
+
+			@Override
+			public void run() {
+				doubleBackToExitPressedOnce = false;
+			}
+		}, 2000);
+	}
+
+	public void resetData() {
 		myApp.setName("");
 		myApp.setCompanyName("");
 		myApp.setEmail("");
@@ -385,7 +423,7 @@ public class SummaryActivity extends Activity {
 		myApp.setIndustry("");
 		myApp.setConsumption("");
 		myApp.setImageUrl("");
-		materials.removeAll(materials); 
+		materials.removeAll(materials);
 		products.removeAll(products);
 	}
 }

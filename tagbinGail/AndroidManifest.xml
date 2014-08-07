@@ -61,7 +61,8 @@
         </activity>
         <activity
             android:name="com.sidak.tagbinGail.DisplayPrizeActivity"
-            android:screenOrientation="landscape" >
+            android:screenOrientation="landscape"
+            android:noHistory="true" >
         </activity>
     </application>
 

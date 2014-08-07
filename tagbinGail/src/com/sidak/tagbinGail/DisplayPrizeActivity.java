@@ -33,7 +33,7 @@ public class DisplayPrizeActivity extends Activity {
 		Uri uri = Uri.parse("android.resource://" + getPackageName() + "/"
 				+ R.raw.vid);
 		vidView.setVideoURI(uri);
-		
+		prize_text.setVisibility(View.INVISIBLE);
 
 		vidView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
 

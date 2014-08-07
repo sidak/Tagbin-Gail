@@ -62,5 +62,6 @@
     <string name="prize_won"> Congratulations :)  You won a "GIFT" </string>
     <string name="prize_lost">Sorry :(  better luck next time</string>
     <string name="title_activity_display_prize">DisplayPrizeActivity</string>
+    <string name="finish_label">Finish</string>
 
 </resources>
