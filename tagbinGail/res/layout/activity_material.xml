@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/pages_b"
+    android:background="@drawable/wdww"
 
     android:fillViewport="true"
     android:id="@+id/material_layout"
@@ -20,12 +20,21 @@
         android:weightSum="8.5" >
         
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2.5"
-            android:orientation="vertical" >
-        </LinearLayout>
+        <LinearLayout 
+	    android:layout_height="wrap_content"
+	    android:layout_width="fill_parent"
+	    android:orientation="vertical"
+	    android:gravity="right|center_vertical"
+	    android:layout_weight="2.5"
+	    
+	    >
+	    <ImageView
+			    android:id="@+id/gail_bg_down"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginRight="20dp"
+			    android:src="@drawable/we" />
+	</LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -120,12 +129,23 @@
                 android:text="@string/next_label" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2.5"
-            android:orientation="vertical" >
-        </LinearLayout>
+        <RelativeLayout 
+	        android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="2.5"
+		    android:gravity="center_vertical|left"
+	        >
+
+			<ImageView
+			    android:id="@+id/gail_bg_down"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_alignParentLeft="true"
+			    android:layout_alignParentTop="true"
+			    android:layout_marginLeft="116dp"
+			    android:src="@drawable/wew" />
+	        
+	    </RelativeLayout>
     </LinearLayout>
 
 </ScrollView>
